@@ -15,7 +15,6 @@ $factory = new \PsrPHP\Psr17\Factory;
 
 $request = $factory->createRequest(string $method, $uri);
 $response = $factory->createResponse(int $code = 200, string $reasonPhrase = '');
-$response = $factory->createGeneralResponse(int $code = 200, array $headers = [], string $body = null);
 $server_request = $factory->createServerRequest(string $method, $uri, array $serverParams = []);
 $stream = $factory->createStream(string $content = '');
 $stream = $factory->createStreamFromFile(string $file, string $mode = 'r');
