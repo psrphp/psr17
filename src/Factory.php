@@ -42,13 +42,6 @@ class Factory implements
         return new Response($code, [], null, '1.1', $reasonPhrase);
     }
 
-    public function createGeneralResponse(int $code = 200, array $headers = [], string $body = null): ResponseInterface
-    {
-        $response = new Response($code, $headers);
-        $response->getBody()->write($body);
-        return $response;
-    }
-
     public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
         if (empty($method)) {
@@ -59,11 +52,6 @@ class Factory implements
             }
         }
         return new ServerRequest($method, $uri, [], null, '1.1', $serverParams);
-    }
-
-    public function createServerRequestFromGlobals(): ServerRequestInterface
-    {
-        return ServerRequest::fromGlobals();
     }
 
     public function createStream(string $content = ''): StreamInterface
@@ -98,10 +86,5 @@ class Factory implements
     public function createUri(string $uri = ''): UriInterface
     {
         return new Uri($uri);
-    }
-
-    public function createUriFromGlobals(): UriInterface
-    {
-        return ServerRequest::getUriFromGlobals();
     }
 }
